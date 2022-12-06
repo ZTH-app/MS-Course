@@ -12,7 +12,7 @@ export class Course {
   @Prop({ type: String })
   description: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Chapter' })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chapter' }] })
   chapters: Chapter[];
 }
 
