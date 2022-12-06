@@ -46,18 +46,23 @@ export class CourseController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: string): Promise<void> {
+  async delete(@Param('id') id: string): Promise<any> {
     try {
       await this.courseService.delete(id);
+      return Promise.resolve({ deleted: id });
     } catch (error) {
       return Promise.reject(error);
     }
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() course: Course): Promise<void> {
+  async update(
+    @Param('id') id: string,
+    @Body() course: Course,
+  ): Promise<Course> {
     try {
       await this.courseService.update(id, course);
+      return Promise.resolve(this.courseService.findById(id));
     } catch (error) {
       return Promise.reject(error);
     }
@@ -67,9 +72,10 @@ export class CourseController {
   async replace(
     @Param('id') id: string,
     @Body() course: Course,
-  ): Promise<void> {
+  ): Promise<Course> {
     try {
       await this.courseService.replace(id, course);
+      return Promise.resolve(course);
     } catch (error) {
       return Promise.reject(error);
     }
