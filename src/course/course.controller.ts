@@ -46,7 +46,7 @@ export class CourseController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: string): Promise<any> {
+  async delete(@Param('id') id: string): Promise<{ deleted: string }> {
     try {
       await this.courseService.delete(id);
       return Promise.resolve({ deleted: id });
