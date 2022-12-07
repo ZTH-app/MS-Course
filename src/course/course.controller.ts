@@ -36,10 +36,10 @@ export class CourseController {
   }
 
   @Post()
-  async create(@Body() course: Course): Promise<void> {
+  async create(@Body() course: Course): Promise<Course> {
     try {
       await this.courseService.create(course);
-      return Promise.resolve();
+      return Promise.resolve(course);
     } catch (error) {
       return Promise.reject(error);
     }

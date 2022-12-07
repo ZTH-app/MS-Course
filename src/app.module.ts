@@ -6,9 +6,11 @@ import { CourseModule } from './course/course.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: 'nest.env',
+      envFilePath: '.env',
     }),
-    MongooseModule.forRoot(process.env.MONGO_URI),
+    MongooseModule.forRoot(
+      process.env.MONGO_URI_PROD || process.env.MONGO_URI_DEV,
+    ),
     CourseModule,
   ],
   controllers: [],
