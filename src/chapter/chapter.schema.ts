@@ -11,8 +11,8 @@ export class Chapter {
   @Prop({ type: String })
   description: string;
 
-  @Prop({ type: [Chapter] })
-  chapters: Chapter[];
+  @Prop({ type: String })
+  content: string;
 }
 
 export const ChapterSchema = SchemaFactory.createForClass(Chapter);
