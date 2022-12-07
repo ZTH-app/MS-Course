@@ -1,50 +1,32 @@
+import { CourseRepository } from './course.repository';
 import { Controller } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Course, CourseDocument } from './course.schema';
+import { Course } from './course.schema';
 
 @Controller()
 export class CourseService {
-  constructor(
-    @InjectModel(Course.name) private courseModel: Model<CourseDocument>,
-  ) {}
+  constructor(private courseRepository: CourseRepository) {}
 
   async create(course: Course) {
-    const createdCourse = new this.courseModel(course);
-    return createdCourse.save();
+    return await this.courseRepository.create(course);
   }
 
   async findAll(): Promise<Course[]> {
-    return this.courseModel.find().exec();
+    return await this.courseRepository.findAll();
   }
 
   async findById(id: string): Promise<Course> {
-    return this.courseModel.findById(id).exec();
+    return await this.courseRepository.findById(id);
   }
 
   async delete(id: string): Promise<void> {
-    await this.courseModel.deleteOne({ _id: id }).exec();
+    return await this.courseRepository.delete(id);
   }
 
   async update(id: string, course: Course): Promise<void> {
-    await this.courseModel
-      .updateOne(
-        {
-          _id: id,
-        },
-        course,
-      )
-      .exec();
+    return await this.courseRepository.update(id, course);
   }
 
   async replace(id: string, course: Course): Promise<void> {
-    await this.courseModel
-      .replaceOne(
-        {
-          _id: id,
-        },
-        course,
-      )
-      .exec();
+    return await this.courseRepository.replace(id, course);
   }
 }
