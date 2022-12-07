@@ -58,57 +58,21 @@ npm start
 
 Retourne la liste des cours
 
+#### Réponse
+
 ```json
 [
   {
     "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
     "name": "MongoDB",
     "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-    "chapters": [
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-    ]
+    "chapters": ["5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f" ]
   },
   {
     "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
     "name": "MongoDB",
     "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-    "chapters": [
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-    ]
+    "chapters": ["5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f" ]
   }
 ]
 ```
@@ -117,37 +81,41 @@ Retourne la liste des cours
 
 Retourne un cours
 
+#### Réponse
+
 ```json
 {
   "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
   "name": "MongoDB",
   "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-   "chapters": [
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-      {
-        "id": "5f9f9f9f9f9f9f9f9f9f9f9f",
-        "name": "MongoDB",
-        "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
-        "content": "..."
-      }
-    ]
+   "chapters":["5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f", "5f9f9f9f9f9f9f9f9f9f9f9f" ]
 }
 ```
 
 ### POST /courses
 
 Créer un cours
+
+#### Requête
+
+Objet à créer dans le body
+
+```json
+{
+  "name": "MongoDB",
+  "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+   "chapters": [
+      "5f9f9f9f9f9f9f9f9f9f9f9f",
+      "5f9f9f9f9f9f9f9f9f9f9f9f",
+      "5f9f9f9f9f9f9f9f9f9f9f9f",
+      "5f9f9f9f9f9f9f9f9f9f9f9f"
+    ]
+}
+```
+
+#### Réponse
+
+L'objet créé
 
 ```json
 {
@@ -166,6 +134,16 @@ Créer un cours
 
 Mettre à jour un cours
 
+#### Requête
+  
+  ```json
+  {
+    "name": "MongoDB"
+  }
+  ```
+
+#### Réponse
+
 ```json
 {
   "name": "MongoDB",
@@ -173,6 +151,29 @@ Mettre à jour un cours
   "chapters": []
 }
 ```
+
+### PUT /courses/:id
+
+#### Requête
+
+```json
+{
+  "name": "MongoDB",
+  "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+  "chapters": []
+}
+```
+
+#### Réponse
+
+```json
+{
+  "name": "MongoDB",
+  "description": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+  "chapters": []
+}
+```
+
 
 ### DELETE /courses/:id
 

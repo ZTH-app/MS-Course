@@ -1,8 +1,19 @@
 db = db.getSiblingDB(`course`);
 
-db.createCollection(`course`);
+db.createCollection(`courses`);
 
-db.course.insertMany([
+db.createUser({
+  user: `course`,
+  pwd: `course`,
+  roles: [
+    {
+      role: `readWrite`,
+      db: `course`,
+    },
+  ],
+});
+
+db.courses.insertMany([
   {
     name: 'MongoDB',
     description:
