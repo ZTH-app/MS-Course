@@ -8,12 +8,12 @@ import { CourseModule } from './course/course.module';
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),
-    MongooseModule.forRoot(
-      process.env.MONGO_URI_PROD || process.env.MONGO_URI_DEV,
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URI_DEV),
     CourseModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
+console.log("L'URL DE LA BDD");
+console.log(process.env.MONGO_URI_DEV);
